@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        li {
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 2px solid #000;
+            border-radius: 100px;
+            display: inline-block;
+            padding: 0 15px;
+        }
+        li a {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .ball {
+            width: 300px;
+            height: 300px;
+            background: #000;
+            transform-style: preserve-3d;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <ul class="list">
+        </ul>
+    </div>
+    <!-- <div class="ball" style="transform: rotateX(80deg)">
+
+    </div> -->
+    <script>
+        document.onmousedown = () => {
+            let ball = document.querySelector('.ball')
+            document.onmousemove = e => {
+                
+            }
+            document.onmouseup = () => {
+                document.onmousemove = null
+            }
+        }
+
+        let rand = (a = 0, b = 256) => {
+            return Math.floor(Math.random() * (b - a))+a
+        }
+
+        class Item {
+            constructor(name, url) {
+                this.li = document.createElement('li')
+                this.a = document.createElement('a')
+                this.a.innerHTML = name
+                this.a.href = url
+                this.setColor()
+                this.append()
+            }
+            setColor() {
+                this.li.style.borderColor = `rgb(${rand()}, ${rand()}, ${rand()})`
+                this.a.style.color = `rgb(${rand()}, ${rand()}, ${rand()})`
+            }
+            append() {
+                this.li.append(this.a)
+                document.querySelector('.list').append(this.li)
+            }
+        }
+        let li1 = new Item('图片转字符','img2char')
+    </script>
+</body>
+</html>
